@@ -1,4 +1,4 @@
-﻿[tool.vercel]
+[tool.vercel]
 entrypoint = "app.main:app"
 
 [tool.vercel.scripts]
