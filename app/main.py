@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+from app.api.routes.insights import router as insights_router
 from app.api.routes.weather import router as weather_router
 
 app = FastAPI(
@@ -18,11 +19,12 @@ app.add_middleware(
     allow_origins=[
         "https://frontend-one-rust-bm8y3mcx02.vercel.app",
     ],
-    allow_methods=["GET"],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
 app.include_router(weather_router)
+app.include_router(insights_router)
 
 
 @app.get("/health", tags=["health"])
